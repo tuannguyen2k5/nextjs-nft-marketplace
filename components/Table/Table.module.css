@@ -1,0 +1,41 @@
+.table {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .row {
+    display: flex;
+    width: 100%;
+    border: 1px solid #ccc;
+    font-weight: bold;
+    background-color: #efefef;
+  }
+  
+  .cell {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .cell:nth-child(2) {
+    text-align: left;
+  }
+  
+  .cell:nth-child(3) {
+    color: #d00000;
+  }
+  
+  .cell:nth-child(4) {
+    color: #00d000;
+  }
+  
+  .cell:nth-child(5) {
+    color: #d0d000;
+  }
+  
+  .cell:nth-child(6),
+  .cell:nth-child(7) {
+    font-weight: bold;
+  }
+  
