@@ -6,9 +6,9 @@ import DropDownMenu from '../DropDownMenu/DropDownMenu'
 import CustomButton from '../CustomButton/CustomButton'
 
 export const discover =[
-  { label: "Collection", url: "https://www.google.com" },  
-  { label: "Search", url: "https://www.facebook.com" },
-  { label: "Author profile", url: "https://www.twitter.com" },
+  { label: "Collection", url: "collections" },  
+  { label: "Search", url: "search" },
+  { label: "Author profile", url: "author" },
   { label: "NFT details", url: "https://www.twitter.com" },
   { label: "Account setting", url: "https://www.twitter.com" },
   { label: "Upload NFT", url: "https://www.twitter.com" },

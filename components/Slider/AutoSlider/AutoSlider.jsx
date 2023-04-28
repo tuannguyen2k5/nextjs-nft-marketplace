@@ -1,5 +1,6 @@
 import CustomButton from "@/components/CustomButton/CustomButton";
 import React from "react";
+import {AiFillCaretLeft} from 'react-icons/ai'
 
 import './AutoSlider.module.css'
 const delay = 2500;
@@ -59,12 +60,12 @@ function AutoSlider({images}) {
         <CustomButton
           handleClick={handlePrevClick}
           title="<"
-          restStyles={"bg-white text-black"}
+          restStyles={"bg-black"}
         />
         <CustomButton
           handleClick={handleNextClick}
           title=">"
-          restStyles={"bg-white text-black"}
+          restStyles={"bg-black"}
         />
         </div>
         

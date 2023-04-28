@@ -19,7 +19,7 @@ const NFTCard = ({NFTData}) => {
     images.nft_image_3,
   ];
   return (
-    <div className="grid grid-cols-3 gap-12 text-center">
+    <div className="grid grid-cols-3 gap-12 text-center mt-10">
       {CardArray.map((el, i) => (
           <div className="flex flex-col items-center p-4 pb-12 rounded-2xl transition cursor-pointer bg-shadowlight_color shadow-xl hover:shadow-shadowdark hover:scale-105" key={i + 1}>
             <div className="w-80 h-80 rounded-2xl mb-2">

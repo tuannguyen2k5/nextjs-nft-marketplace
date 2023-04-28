@@ -9,6 +9,8 @@ import NFTCard from "./NFTCard/NFTCard";
 import Collection from "./Collection/Collection"
 import Banner from "./Banner/Banner";
 import Brand from "./Brand/Brand";
+import Title from "./Title/Title";
+import CustomButton from "./CustomButton/CustomButton";
 export{
     Navbar,
     Footer,
@@ -20,5 +22,7 @@ export{
     NFTCard,
     Collection,
     Banner,
-    Brand
+    Brand,
+    Title,
+    CustomButton
 }

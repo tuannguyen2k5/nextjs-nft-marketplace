@@ -1,4 +1,4 @@
-import { Slider, Filter, Table, Container, Category, NFTCard, Collection, Brand } from "@/components/componentsindex"
+import { Slider, Filter, Table, Container, Category, NFTCard, Collection, Brand, Title } from "@/components/componentsindex"
 const titles = ["1H", "1D", "7D", "30D"]
 const data = [
   {
@@ -48,7 +48,12 @@ const Home = () => {
         <Filter titles={titles}/>
         <Collection/>
         <Table data={data} />
+        <Title heading="Category" paragraph="Explore the NFTs in the most featured categories."/>
         <Category/>
+        <Title
+        heading="Featured NFTs"
+        paragraph="Discover the most outstanding NFTs in all topics of life."
+        />
         <NFTCard/>
         <Brand/>
       </Container>
