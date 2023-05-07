@@ -1,9 +1,11 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import Logo from '../Logo/Logo'
-import styles from '@/styles'
 import Search from '../Search/Search'
 import DropDownMenu from '../DropDownMenu/DropDownMenu'
 import CustomButton from '../CustomButton/CustomButton'
+import { NFTMarketplaceContext } from "@/context/NFTMarketplaceContext";
+import { useRouter } from 'next/router'
+
 
 export const discover =[
   { label: "Collection", url: "collections" },  
@@ -11,7 +13,7 @@ export const discover =[
   { label: "Author profile", url: "author" },
   { label: "NFT details", url: "https://www.twitter.com" },
   { label: "Account setting", url: "https://www.twitter.com" },
-  { label: "Upload NFT", url: "https://www.twitter.com" },
+  { label: "Upload NFT", url: "uploadNFT" },
   { label: "Connect wallet", url: "https://www.twitter.com" }
 ]
 export const helpCenter =[
@@ -28,6 +30,8 @@ const profile =[
 ]
 
 const Navbar = () => {
+  const {connectWallet,walletAddress} = useContext(NFTMarketplaceContext)
+  const router = useRouter();
  
   return (
     <div className='w-full z-50 sticky h-20 flex items-center bg-white-400'>
@@ -47,7 +51,10 @@ const Navbar = () => {
           <DropDownMenu
           title="Profile"
           links={profile}/>
-          <CustomButton title="Connect wallet"/>
+          {walletAddress == "" ? (
+          <CustomButton title="Connect wallet" handleClick={() =>connectWallet()}/>):(
+            <CustomButton title="Create" handleClick={() =>router.push('/uploadNFT')}/>
+          )}
         </div>
 
       </div>

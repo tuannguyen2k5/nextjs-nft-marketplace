@@ -9,7 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@openzeppelin/contracts": "^4.8.3",
+    "@pinata/sdk": "^2.1.0",
     "autoprefixer": "10.4.14",
+    "axios": "^1.4.0",
+    "dotenv": "^16.0.3",
+    "ether": "^0.0.9",
+    "fs": "^0.0.1-security",
     "next": "13.3.1",
     "postcss": "8.4.23",
     "react": "18.2.0",
@@ -17,6 +23,16 @@
     "react-icons": "^4.8.0",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
-    "tailwindcss": "3.3.1"
+    "tailwindcss": "3.3.1",
+    "web3modal": "^1.9.12"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^2.0.2",
+    "hardhat": "^2.14.0"
+  },
+  "browser": {
+    "fs": false,
+    "os": false,
+    "path": false
   }
 }

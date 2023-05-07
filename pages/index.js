@@ -1,4 +1,5 @@
 import { Slider, Filter, Table, Container, Category, NFTCard, Collection, Brand, Title } from "@/components/componentsindex"
+
 const titles = ["1H", "1D", "7D", "30D"]
 const data = [
   {
@@ -40,6 +41,7 @@ const data = [
 ];
 
 const Home = () => {
+ 
   return (
     <div>
       
