@@ -1,5 +1,6 @@
+import React, { useState, useEffect, useContext } from "react";
 import { Slider, Filter, Table, Container, Category, NFTCard, Collection, Brand, Title } from "@/components/componentsindex"
-
+import { NFTMarketplaceContext } from "@/context/NFTMarketplaceContext";
 const titles = ["1H", "1D", "7D", "30D"]
 const data = [
   {
@@ -42,6 +43,29 @@ const data = [
 
 const Home = () => {
  
+  const { walletAddress,fetchNFTs } = useContext(NFTMarketplaceContext);
+  const [nfts, setNfts] = useState([]);
+
+  // useEffect( () => {
+  //   if (walletAddress) {
+  //     console.log('fetching nft...')
+  //     fetchNFTs().then((items) => {
+  //       setNfts(items.reverse());
+  //       console.log(nfts);
+  //     });
+  //     console.log('okk')
+  //   }
+  // },[]);
+  useEffect(() =>{
+    if (walletAddress) {
+    (async () => {
+      const nfts = await fetchNFTs()
+
+      setNfts(nfts)
+    })()
+  }
+  })
+
   return (
     <div>
       
@@ -56,7 +80,7 @@ const Home = () => {
         heading="Featured NFTs"
         paragraph="Discover the most outstanding NFTs in all topics of life."
         />
-        <NFTCard/>
+        <NFTCard NFTData={nfts}/>
         <Brand/>
       </Container>
     </div>

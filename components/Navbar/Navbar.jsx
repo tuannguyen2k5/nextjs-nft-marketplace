@@ -11,7 +11,7 @@ export const discover =[
   { label: "Collection", url: "collections" },  
   { label: "Search", url: "search" },
   { label: "Author profile", url: "author" },
-  { label: "NFT details", url: "https://www.twitter.com" },
+  { label: "NFT details", url: "NFT-details" },
   { label: "Account setting", url: "https://www.twitter.com" },
   { label: "Upload NFT", url: "uploadNFT" },
   { label: "Connect wallet", url: "https://www.twitter.com" }

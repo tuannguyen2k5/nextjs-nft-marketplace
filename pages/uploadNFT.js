@@ -9,16 +9,7 @@ const uploadNFT = () => {
     const [fileUrl, setFileUrl] = useState(null)
     const [file, setFile] = useState()
     const [formInput, setFormInput] = useState({ price: '', name: '', description: '' })
-    // const getUploadParams = ({ meta }) => { return { url: 'https://httpbin.org/post' } }
-
-    // // called every time a file's `status` changes
-    // const handleChangeStatus = ({ meta, file }, status) => { setFile(file) }
-
-    // // receives array of files that are done uploading when submit button is clicked
-    // const handleSubmit = (files, allFiles) => {
-    //     console.log(files.map(f => f.meta))
-    //     allFiles.forEach(f => f.remove())
-    // }
+   
     return (
 
         <Container >

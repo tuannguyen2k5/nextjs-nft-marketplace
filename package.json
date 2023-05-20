@@ -16,6 +16,7 @@
     "dotenv": "^16.0.3",
     "ether": "^0.0.9",
     "fs": "^0.0.1-security",
+    "js-ipfs-fetch": "^5.0.0",
     "next": "13.3.1",
     "postcss": "8.4.23",
     "react": "18.2.0",
