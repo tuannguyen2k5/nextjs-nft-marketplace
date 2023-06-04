@@ -64,7 +64,7 @@ const Home = () => {
       setNfts(nfts)
     })()
   }
-  })
+  },[])
 
   return (
     <div>
