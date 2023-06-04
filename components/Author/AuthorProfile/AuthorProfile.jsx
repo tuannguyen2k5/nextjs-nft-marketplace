@@ -52,12 +52,12 @@ const AuthorProfile = ({ currentAccount }) => {
 
         <div className="col-span-4">
           <h2>
-            Dony Herrera
+            {currentAccount.slice(0,10)+'...'}
           </h2>
          
 
           <div className="-mt-4 flex">
-            <input className="border-none cursor-none w-1/3 bg-transparent" type="text" defaultValue={currentAccount} id="myInput" />
+            <input className="border-none cursor-none w-1/2 bg-transparent" type="text" defaultValue={currentAccount} id="myInput" />
             <FiCopy
               onClick={() => copyAddress()}
               className="transition cursor-pointer hover:text-black hover:shadow"

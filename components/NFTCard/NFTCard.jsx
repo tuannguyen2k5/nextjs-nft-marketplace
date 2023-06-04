@@ -30,7 +30,7 @@ const NFTCard = ({ NFTData }) => {
           </div>
           <p className='p-2'>{el.name} #{el.tokenId}</p>
           <p className='p-2'>{el.price}ETH</p>
-          <CustomButton title="Buy NFT" />
+          <p className='p-2'>Seller: {el.seller}</p>
         </div>
         </Link>
       ))}
