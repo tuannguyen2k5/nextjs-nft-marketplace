@@ -20,6 +20,7 @@ const connectingWithSmartContract = async () => {
         const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
         const signer = provider.getSigner();
         const contract = fetchContract(signer);
+        console.log(contract)
         return contract;
     } catch (error) {
         console.log("Something went wrong while connecting with contract", error);
@@ -184,7 +185,7 @@ export const NFTMarketplaceProvider = (({ children }) => {
                 ? await contract.createToken(url, price, {
                     value: listingPrice.toString(),
                 })
-                : await contract.resellToken(url, price, {
+                : await contract.resellToken(id, price, {
                     value: listingPrice.toString(),
                 });
 
@@ -207,7 +208,7 @@ export const NFTMarketplaceProvider = (({ children }) => {
 
                 const items = await Promise.all(
                     data.map(
-                        async ({ tokenId, seller, owner, price: unformattedPrice }) => {
+                        async ({ tokenId, seller, owner, price }) => {
                             const tokenURI = await contract.tokenURI(tokenId);
 
                             // Fetch the data content from Pinata and log it to the console
@@ -221,15 +222,15 @@ export const NFTMarketplaceProvider = (({ children }) => {
                                 name = response.data.name
                                 image = response.data.image
                                 description = response.data.description
-                                unformattedPrice = response.data.price
+                                price = response.data.price
                                 console.log(response.data);
                             }).catch((error) => {
                                 console.error(error);
                             });
-                            const price = ethers.utils.formatUnits(
-                                unformattedPrice.toString(),
-                                "ether"
-                            );
+                            // const price = ethers.utils.formatUnits(
+                            //     unformattedPrice.toString(),
+                            //     "ether"
+                            // );
 
                             return {
                                 price,
@@ -254,11 +255,89 @@ export const NFTMarketplaceProvider = (({ children }) => {
             console.log(error);
         }
     };
-    useEffect(() => {
-        fetchNFTs();
-    }, []);
+    useEffect(() =>{
+        fetchNFTs()
+    },[])
+    const fetchMyNFTOrListedNFT = async (type) => {
+        try {
+            if(walletAddress){
+                const contract = await connectingWithSmartContract()
+
+                const data =
+                    type == "fetchItemsListed"
+                        ? await contract.fetchItemsListed()
+                        : await contract.fetchMyNFTs();
+
+                const items = await Promise.all(
+                    data.map(
+                        async ({ tokenId, seller, owner, price }) => {
+                            const tokenURI = await contract.tokenURI(tokenId);
+
+                            // Fetch the data content from Pinata and log it to the console
+                            let name, image, description
+
+                            await axios.get(`https://gateway.pinata.cloud/ipfs/${tokenURI.slice(7)}`, {
+                                headers: {
+                                    'Accept': 'text/plain'
+                                }
+                            }).then((response) => {
+                                name = response.data.name
+                                image = response.data.image
+                                description = response.data.description
+                                price = response.data.price
+                                console.log(response.data);
+                            }).catch((error) => {
+                                console.error(error);
+                            });
+
+                            return {
+                                price,
+                                tokenId: tokenId.toNumber(),
+                                seller,
+                                owner,
+                                image,
+                                name,
+                                description,
+                                tokenURI,
+                            };
+                        }
+                    )
+                );
+                console.log(items)
+                return items;
+            }
+        } catch (error) {
+            setError("Error while fetching NFTS");
+            setOpenError(true);
+            console.log(error);
+        }
+    }
+    useEffect(() =>{
+        fetchMyNFTOrListedNFT()
+    },[walletAddress])
+    const buyNFT = async (nft) => {
+        try {
+            const contract = await connectingWithSmartContract()
+            const price = ethers.utils.parseUnits(nft.price.toString(), "ether")
+            const transaction = await contract.createMarketSale(nft.tokenId, {
+                value: price
+            })
+            await transaction.wait()
+        } catch (error) {
+            console.log("Error while buying NFT")
+        }
+    }
+
     return (
-        <NFTMarketplaceContext.Provider value={{ connectingWithSmartContract, connectWallet, checkIfWalletConnected, walletAddress, createNFT, fetchNFTs }}>
+        <NFTMarketplaceContext.Provider value={{
+            connectingWithSmartContract, connectWallet,
+            checkIfWalletConnected,
+            walletAddress,
+            createNFT,
+            fetchNFTs, fetchMyNFTOrListedNFT,
+            buyNFT,
+            createSale
+        }}>
             {children}
         </NFTMarketplaceContext.Provider>
     )
