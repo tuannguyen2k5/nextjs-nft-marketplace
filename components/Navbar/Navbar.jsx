@@ -12,21 +12,21 @@ export const discover =[
   { label: "Search", url: "search" },
   { label: "Author profile", url: "author" },
   { label: "NFT details", url: "NFT-details" },
-  { label: "Account setting", url: "https://www.twitter.com" },
+  { label: "Account setting", url: "/" },
   { label: "Upload NFT", url: "uploadNFT" },
-  { label: "Connect wallet", url: "https://www.twitter.com" }
+  { label: "Connect wallet", url: "/" }
 ]
 export const helpCenter =[
-  { label: "About", url: "https://www.google.com" },  
-  { label: "Contact us", url: "https://www.facebook.com" },
-  { label: "Twitter", url: "https://www.twitter.com" }
+  { label: "About", url: "/" },  
+  { label: "Contact us", url: "/contactus" },
+  { label: "Twitter", url: "/" }
 ]
 const profile =[
-  { label: "My profile", url: "https://www.google.com",icon: 'user'},  
-  { label: "My items", url: "https://www.google.com",icon: 'userimage'},  
-  { label: "Edit profile", url: "https://www.google.com",icon: 'useredit'},  
-  { label: "Help", url: "https://www.google.com",icon: 'helpcenter'},  
-  { label: "About us", url: "https://www.google.com",icon: 'download'},  
+  { label: "My profile", url: "/",icon: 'user'},  
+  { label: "My items", url: "/author",icon: 'userimage'},  
+  { label: "Edit profile", url: "/",icon: 'useredit'},  
+  { label: "Help", url: "/",icon: 'helpcenter'},  
+  { label: "About us", url: "/",icon: 'download'},  
 ]
 
 const Navbar = () => {

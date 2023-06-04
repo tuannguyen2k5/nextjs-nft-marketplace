@@ -12,6 +12,7 @@ import Brand from "./Brand/Brand";
 import Title from "./Title/Title";
 import CustomButton from "./CustomButton/CustomButton";
 import NFTDetailsPage from "./NFTDetailsPage/NFTDetailsPage";
+import SearchBar from "./SearchBar/SearchBar";
 export{
     Navbar,
     Footer,
@@ -26,5 +27,6 @@ export{
     Brand,
     Title,
     CustomButton,
-    NFTDetailsPage
+    NFTDetailsPage,
+    SearchBar
 }
